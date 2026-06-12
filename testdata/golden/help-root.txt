@@ -1,0 +1,41 @@
+asctl is a CLI for managing App Store Connect: TestFlight, builds, releases,
+code signing, team users, and sales reports.
+
+It wraps the App Store Connect API around real release workflows: invite and
+sync beta testers, assign builds to groups, submit versions for review, and
+inspect what is live — from a terminal, script, or CI job.
+
+Basic workflow:
+
+  asctl auth init
+  asctl apps use com.example.myapp
+  asctl beta groups create alpha
+  asctl beta testers sync --group alpha --file testers.csv
+  asctl builds assign 42 --group alpha
+
+Guide: https://github.com/vedanta/asctl
+
+Usage:
+  asctl [command]
+
+Health & inventory:
+  help        Help about any command
+  version     Show CLI version
+
+Flags:
+      --all              fetch all pages
+      --app string       app context (bundle ID or ID); overrides the profile default
+      --config string    path to config file (default ~/.config/asctl/config.yaml)
+      --debug            log requests and responses to stderr
+      --dry-run          preview what would change; touch nothing
+  -h, --help             help for asctl
+      --limit int        maximum number of results to return
+      --no-color         disable terminal colors
+  -o, --output string    output format: table, json, csv, yaml (default "table")
+      --profile string   profile to use
+  -q, --quiet            suppress non-essential output
+      --timeout int      request timeout in seconds (default 30)
+  -v, --verbose          show more detail
+  -y, --yes              apply without asking for confirmation
+
+Use "asctl [command] --help" for more information about a command.
